@@ -20,3 +20,8 @@ Overall we have a system of $4n$ linear equations with $4n$ unknowns. The matrix
 
 The vector of unknowns will be of the form $(a_0, b_0, c_0, d_0,\dots a_{n-1}, b_{n-1}, c_{n-1}, d_{n-1})^\text{T}$.
 
+\begin{equation} \begin{aligned}
+&T(n) \leq 1 + \sum_{i=1}^{n-1}2(n-i) = 1 + 2((n-1)+(n-2)+\cdots+1) = 1 + n(n-1) \in O(n^2) \\
+&T(n) \geq 1 + \sum_{i=1}^{n-1}(n-i) = 1 + \frac{n(n-1)}{2} \in \Omega(n^2) \\
+&\Rightarrow T(n) \in \Theta(n^2)
+\end{aligned} \end{equation}
