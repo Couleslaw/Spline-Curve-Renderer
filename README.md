@@ -17,3 +17,18 @@ Overall we have a system of $4n$ linear equations with $4n$ unknowns. The matrix
 The vector of unknowns will be of the form $(a_0, b_0, c_0, d_0,\dots a_{n-1}, b_{n-1}, c_{n-1}, d_{n-1})^\text{T}$.
 s
 If we make this more general for order $m$ polynomials we have $(m+1)n$ unknows and need to obtain $(m+1)n$ equations. We can sett the first $m-1$ derivatives to be equal in all of the given points. This leaves us with $m-1$ more conditions we have to give in order to have $(m+1)n$ equations. I chose to set the second derivative to be zero at the endpoints. If we need more we just set the third, fourth fifth,... derivative to be zero at the endpoints.
+
+# Zápočtový program 
+
+Základní úloha je proložit zadané body spline funkcí, konkrétně natural splinem. V programu je možné:
+- přidávat body
+- odebírat body
+- pohybovat s body
+- pohybovat se v soustavě souřadnic (tedy posunovat graf)
+- zoomovat,měnit stupeň polynomů splinů - základní je 3, je možné zvyšovat na 5, 7, 9, 11, 13. Sudé stupně jsem vynechal, protože mají lichý počet okrajových podmínek a ty křivky se nechovají tak jak bychom chtěli
+- ručně měnit limity souřadnicových os
+- jedním kliknutím změnit limity os tak, aby se celá křivka vešla na obrazovku a nikde nebyly nadbytečné okraje
+- určit si jestli chceme nebo nechceme škálovat obě osy stejně
+- určit si jestli chceme nebo nechceme automaticky měnit limity aby se křivka vždy vešla na obrazovku.
+
+Celý program je rozdělený do 3 class. První classa slouží k vytvoření GUI pomocí knihovny PyQt5. Druhá classa slouží k vykreslení grafu a implementaci event-handlingu pomocí knihovny matplotlib. Třetí classa zajišťuje komunikaci mezi PyQt5 a matplotlibem.  
