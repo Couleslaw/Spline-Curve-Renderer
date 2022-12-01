@@ -2,7 +2,7 @@
 
 We have $n+1$ points of the form $(x_0, y_0), \dots (x_n, y_n)$ and we want to find $n$ functions $f_0, \dots f_{n-1}$ of the form $f_i = a_ix^3 + b_ix^2 + c_ix + d_i$ such that:
 - $f_0(x_0) = y_0, \quad f_{n-1}(x_n) = y_n, \qquad \qquad \qquad \qquad \qquad $ 2 equations
-- $f_i(x_{i+1}) = f_{i+1}(x_{i+1}) = y_{i+1}, \quad 0 \leq i \leq n-2$, $\qquad $ 2n-2 equations
+- $f_i(x_{i+1}) = f_{i+1}(x_{i+1}) = y_{i+1}, \quad 0 \leq i \leq n-2, \qquad $ 2n-2 equations
 - $f'_ i(x_{i+1}) = f'_ {i+1}(x_{i+1}), \quad 0 \leq i \leq n-2, \qquad \qquad \quad$  n-1 equations
 - $f''_ i(x_{i+1}) = f''_ {i+1}(x_{i+1}), \quad 0 \leq i \leq n-2. \qquad \qquad quad$ n-1 equations
 - $f''_ 0(x_0) = 0, \quad f''_ {n-1}(x_n) = 0, \qquad \qquad \qquad \qquad \qquad $ 2 equations
