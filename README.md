@@ -31,5 +31,5 @@ Overall we have a system of $4n$ linear equations with $4n$ unknowns. The matrix
 
 The vector of unknowns will be of the form $(a_0, b_0, c_0, d_0,\dots a_{n-1}, b_{n-1}, c_{n-1}, d_{n-1})^\text{T}$.
 
-If we make this more general for order $m$ polynomials we have $(m+1)n$ unknows and need to obtain $(m+1)n$ equations. We can sett the first $m-1$ derivatives to be equal in all of the given points. This leaves us with $m-1$ more conditions we have to give in order to have $(m+1)n$ equations. I chose to set the second derivative to be zero at the endpoints. If we need more we just set the third, fourth fifth,... derivative to be zero at the endpoints.
+If we make this more general for order $m$ polynomials we have $(m+1)n$ unknows and need to come up with $(m+1)n$ equations. We can set the first $m-1$ derivatives to be equal in all of the given points. This leaves us with $m-1$ more conditions we have to give. I chose to set the second derivative to be zero at the endpoints. If we need more conditions we just set the third, fourth fifth,... derivatives to be zero at the endpoints.
 
