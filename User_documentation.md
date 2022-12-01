@@ -1,5 +1,5 @@
 # User documentation
-## -- Modes
+## Modes
 There are three modes which the program can be in. They can be switch via the three radio buttons in the top-left corner.
 - Add points mode - lets you add new at the location you clicked.
 - Delete points mode - removes a point you cliked.
@@ -32,16 +32,10 @@ The spline function is redrawn automatically whenever anything changes.
 - You can't change limits manually while 'Auto adjust' or 'Equal axes' is toggled.
 - Original limits are restored if there was no user-movement in the figure while either of these was toggled.
 
-## Changed the degree of splines
+## Changing the degree of splines
 - The default degree is 3.
 - Degree can be changed via a slider with values 3, 5, 7, 9, 11, 13.
 - The degree can't be changed while moving a point. 
 - The slider can be incrementing using arrow-keys (if it is focused). 
 - You can change focus to the slider by pressing 'Alt+d.'
 - It is not recomeded to have very small intervals between adjacent points if the degree is high.
-
-
-
-
-
-
