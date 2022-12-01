@@ -387,26 +387,26 @@ class MyApp(QWidget):
         if not checked:
             if not self.equalAxes.isChecked():
                 self.enable_input_lines(True)
-            self.update_xmin()      # set pre-auto_adjust lims
-            self.update_xmax()
-            self.update_ymin()
-            self.update_ymax()
+                self.update_xmin()      # set pre-auto_adjust lims
+                self.update_xmax()
+                self.update_ymin()
+                self.update_ymax()
         self.canvas.redraw()
 
     def checked_equalAxes(self, checked):
         """Turns equal_axes on and off."""
         MyApp.equal_axes = not MyApp.equal_axes
         if checked:
-            self.enable_input_lines(False)
             self.canvas.set_equal_axes()
+            self.enable_input_lines(False)
         else:
+            self.canvas.set_auto_axes()
             if not self.autoAdjust.isChecked():
                 self.enable_input_lines(True)
-            self.canvas.set_auto_axes()
-            self.update_xmin()      # set pre-equal_axes lims
-            self.update_xmax()
-            self.update_ymin()
-            self.update_ymax()
+                self.update_xmin()      # set pre-equal_axes lims
+                self.update_xmax()
+                self.update_ymin()
+                self.update_ymax()
         self.canvas.redraw()
 
     def changed_degree(self):
