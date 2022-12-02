@@ -25,7 +25,7 @@ DEFAULT_ymin = -10
 DEFAULT_ymax = 10
 
 MIN_freq = 100
-MAX_len_linspace = 2**18        # max size for int64 will be 2**21B = 2MB
+MAX_len_linspace = 2**18        # max size for float64 will be 2**21B = 2MB
 MIN_INTERVAL_num_points = 100
 
 MIN_deg = 3
