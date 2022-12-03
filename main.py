@@ -1,4 +1,4 @@
-from spline_functions import *
+from spline_functions import binary_search, min_interval, update_coords_add, update_coords_del, spline
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
