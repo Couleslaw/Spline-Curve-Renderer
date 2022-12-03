@@ -1,7 +1,7 @@
 # User documentation
 ## Modes
 There are three modes which the program can be in. They can be switched via three radio buttons in the top-left corner.
-- Add points mode - lets you add new points at the location you clicked.
+- Add points mode - lets you add new points at the location where you clicked.
 - Delete points mode - removes the point you cliked.
 - Move points mode - lets you pick up and move points.
 
