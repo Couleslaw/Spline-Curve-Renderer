@@ -1,4 +1,4 @@
-# User documentation
+# User documentation - není ještě hotová
 ## Modes
 There are three modes which the program can be in. They can be switched via three radio buttons in the top-left corner.
 - Add points mode - lets you add new points at the location where you clicked.
