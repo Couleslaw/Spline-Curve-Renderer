@@ -28,6 +28,7 @@ The spline function is redrawn automatically whenever anything changes.
 - If the graph does not fit on the screen, limits of the axes can be adjusted accordingly by clicling the 'Fit to screen' button.
 - If you toggle 'Auto adjust' this will always be the case. 
 - If you want equal scaling on both axes you should toggle 'Equal axes.'
+- 'Auto adjust' and 'Equal axes' cannot be toggled at the same time.
 - You can't change limits manually while 'Auto adjust' or 'Equal axes' is toggled.
 - Original limits are restored if there was no user-movement in the figure while either of these was toggled.
 
