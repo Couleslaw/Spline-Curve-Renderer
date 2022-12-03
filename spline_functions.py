@@ -16,6 +16,7 @@ def binary_search(a, n):
 
 
 def update_coords_add(xs, ys, xnew, ynew):
+    """Inserts 'xnew' to a sorted list 'xs' and keeps it sorted. Inserts 'ynew' to 'ys' accordingly."""
     if len(xs) == 0:
         ind = 0
     else:
@@ -26,6 +27,7 @@ def update_coords_add(xs, ys, xnew, ynew):
 
 
 def update_coords_del(xs, ys, xremove):
+    """Removes 'xremove' from a sorted list 'xs'. Removes the y value from 'ys' accordingly."""
     ind = binary_search(xs, xremove)
     del xs[ind]
     del ys[ind]
@@ -145,57 +147,4 @@ def spline(x, y, m):
     v = np.linalg.solve(matrix, b).reshape((n, m))  # solve the SoLE and reshape the result
     def f(i):
         return lambda t: pl.polyval(t, v[i])
-    return [f(i) for i in range(n)]
-
-
-def spline4(x, y):
-    """ f_i = ax^4 + bx^3 + cx^2 + dx + e
-        f'_i = 4ax^3 + 3bx^2 + 2cx + d
-        f''_i = 12ax^2 + 6bx + 2c
-        f'''_i = 24ax + 6b
-    """
-
-    n = len(x) - 1  # number of polynomials
-
-    # create the SoLE matrix and vector
-    matrix = np.zeros(shape=(5 * n, 5 * n))
-    b = np.zeros(5 * n)
-
-    # rows 0 to 2n-1
-    for i in range(n):
-        matrix[2 * i][5 * i:5 * i + 5] = [x[i] ** 4, x[i] ** 3, x[i] ** 2, x[i], 1]
-        matrix[2 * i + 1][5 * i:5 * i + 5] = [x[i + 1] ** 4, x[i + 1] ** 3, x[i + 1] ** 2, x[i + 1], 1]
-        b[2 * i] = y[i]
-        b[2 * i + 1] = y[i + 1]
-
-    # rows 2n to 3n-2
-    for j in range(2 * n, 3 * n - 1):
-        i = j - 2 * n
-        matrix[j][5 * i:5 * i + 4] = [4 * x[i + 1]**3, 3 * x[i + 1] ** 2, 2 * x[i + 1], 1]
-        matrix[j][5 * i + 5:5 * i + 9] = [-4 * x[i + 1]**3, -3 * x[i + 1] ** 2, -2 * x[i + 1], -1]
-
-    # rows 3n-1 to 4n-3
-    for j in range(3 * n - 1, 4 * n - 2):
-        i = j - (3 * n - 1)
-        matrix[j][5 * i:5 * i + 3] = [12 * x[i + 1]**2, 6 * x[i + 1], 2]
-        matrix[j][5 * i + 5:5 * i + 8] = [-12 * x[i + 1]**2, -6 * x[i + 1], -2]
-
-    # rows 4n-2 to 5n-4
-    for j in range(4 * n - 2, 5 * n - 3):
-        i = j - (4 * n - 2)
-        matrix[j][5 * i:5 * i + 2] = [24 * x[i + 1], 6]
-        matrix[j][5 * i + 5:5 * i + 7] = [-24 * x[i + 1], -6]
-
-    # rows 5n-3 and 5n-2 --> f_0'''(x0) = f_{n-1}'''(xn) = 0
-    matrix[5 * n - 3][0:2] = [24 * x[0], 6]
-    matrix[5 * n - 2][-5:-3] = [24 * x[n], 6]
-
-    # row 5n-1 --> f0''(x0) = 0
-    matrix[5 * n - 1][0:3] = [12 * x[0]**2, 6 * x[0], 2]
-
-    v = np.linalg.solve(matrix, b).reshape((n, 5))  # solve the SoLE and reshape the result
-
-    def f(i):
-        return lambda t: v[i][0] * t ** 4 + v[i][1] * t ** 3 + v[i][2] * t**2 + v[i][3] * t + v[i][4]
-
     return [f(i) for i in range(n)]
