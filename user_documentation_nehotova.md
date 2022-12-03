@@ -26,7 +26,7 @@ The spline function is redrawn automatically whenever anything changes.
 
 ## Changing the limits of the coordinate axes 
 - Limits can be changed manually.
-- If the graph does not fit on the screen, limits of the axes can be adjusted accordingly by clicling on the 'Fit to screen' button.
+- If the graph does not fit on the screen, limits can be adjusted accordingly by clicling on the 'Fit to screen' button.
 - If you toggle 'Auto adjust' this will always be the case. 
 - If you want equal scaling on both axes you should toggle 'Equal axes.'
 - 'Auto adjust' and 'Equal axes' cannot be toggled at the same time.
