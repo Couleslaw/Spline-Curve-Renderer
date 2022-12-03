@@ -14,6 +14,7 @@ The spline function is redrawn automatically whenever anything changes.
 
 ## Deleting existing points
 - Existing points can be removed by selecting the 'Delete points' mode and left-clicking on them.
+- All points can be deleted by clicking on the 'Delete all' button.
 
 ## Moving points
 - Points can be picked up and dragged by selecting the 'Move points' mode and using the left mouse button.
@@ -25,7 +26,7 @@ The spline function is redrawn automatically whenever anything changes.
 
 ## Changing the limits of the coordinate axes 
 - Limits can be changed manually.
-- If the graph does not fit on the screen, limits of the axes can be adjusted accordingly by clicling the 'Fit to screen' button.
+- If the graph does not fit on the screen, limits of the axes can be adjusted accordingly by clicling on the 'Fit to screen' button.
 - If you toggle 'Auto adjust' this will always be the case. 
 - If you want equal scaling on both axes you should toggle 'Equal axes.'
 - 'Auto adjust' and 'Equal axes' cannot be toggled at the same time.
