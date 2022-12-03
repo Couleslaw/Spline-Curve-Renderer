@@ -1,8 +1,8 @@
 # User documentation
 ## Modes
-There are three modes which the program can be in. They can be switched via the three radio buttons in the top-left corner.
-- Add points mode - lets you add new at the location you clicked.
-- Delete points mode - removes a point you cliked.
+There are three modes which the program can be in. They can be switched via three radio buttons in the top-left corner.
+- Add points mode - lets you add new points at the location you clicked.
+- Delete points mode - removes the point you cliked.
 - Move points mode - lets you pick up and move points.
 
 The spline function is redrawn automatically whenever anything changes.
