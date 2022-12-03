@@ -15,7 +15,7 @@ def binary_search(a, n):
     return l
 
 
-def update_coords(xs, ys, xnew, ynew):
+def update_coords_add(xs, ys, xnew, ynew):
     if len(xs) == 0:
         ind = 0
     else:
@@ -23,6 +23,12 @@ def update_coords(xs, ys, xnew, ynew):
         ind = ind if xnew < xs[0] else ind+1
     xs.insert(ind, xnew)
     ys.insert(ind, ynew)
+
+
+def update_coords_del(xs, ys, xremove):
+    ind = binary_search(xs, xremove)
+    del xs[ind]
+    del ys[ind]
 
 
 def min_interval(a):
