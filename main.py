@@ -1,4 +1,4 @@
-from spline_functions import binary_search, update_coords, min_interval, spline
+from spline_functions import *
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,7 +15,8 @@ from PyQt5.QtWidgets import (
     QSlider,
     QLineEdit,
     QCheckBox,
-    QRadioButton
+    QRadioButton,
+    QMessageBox
 )
 
 # constants
@@ -70,7 +71,7 @@ class SplineCurvesBuilder:
             return
 
         if (MyApp.add_point or event.button == 3) and event.xdata not in self.xs:    # create a new point
-            update_coords(self.xs, self.ys, event.xdata, event.ydata)
+            update_coords_add(self.xs, self.ys, event.xdata, event.ydata)   # keep xs sorted
             self.create_spline(self.xs, self.ys)
 
         elif event.button == 1 and not MyApp.auto_adjust:  # left mouse button --> begin canvas movement
@@ -93,13 +94,11 @@ class SplineCurvesBuilder:
         y = self.points.get_ydata()[ind]
 
         if MyApp.delete_point:  # delete the point
-            self.xs.remove(x)
-            self.ys.remove(y)
+            update_coords_del(self.xs, self.ys, x)
             self.create_spline(self.xs, self.ys)
         elif MyApp.move_point_or_canvas:   # begin point movement
             self.press = (x, y)
             self.moving_point = True
-            # self.remove_point = True    # the point will be deleted and replaced by a new point upon mouse movement
             self.app.slider.setEnabled(False)   # disable changing degree
 
     def on_motion(self, event):
@@ -116,11 +115,10 @@ class SplineCurvesBuilder:
             self.points.figure.canvas.draw()
 
         elif self.moving_point:
-            if event.xdata not in self.xs: # update coords if the new x coordinate is valid
-                self.xs.remove(xlast)
-                self.ys.remove(ylast)
+            if event.xdata not in self.xs:  # update coords if the new x coordinate is valid
+                update_coords_del(self.xs, self.ys, xlast)
+                update_coords_add(self.xs, self.ys, event.xdata, event.ydata)
                 self.press = (event.xdata, event.ydata)     # remember the coord if they are valid
-                update_coords(self.xs, self.ys, event.xdata, event.ydata)
             self.create_spline(self.xs, self.ys)
 
     def on_release(self, event):
@@ -243,6 +241,11 @@ class Canvas(FigureCanvas):
         self.spl.points.axes.axis('auto')
         self.redraw()
 
+    def delete_all_points(self):
+        self.spl.xs = []
+        self.spl.ys = []
+        self.redraw()
+
 
 class MyApp(QWidget):
     """Creates the GUI using the PyQt5 library."""
@@ -288,6 +291,12 @@ class MyApp(QWidget):
         self.fit_button.setText("Fit to screen")
         self.fit_button.clicked.connect(self.clicked_fit)
         self.topLayout.addWidget(self.fit_button)
+
+        # create the 'Delete all' button
+        self.delete_all_button = QPushButton(self)
+        self.delete_all_button.setText("Delete all")
+        self.delete_all_button.clicked.connect(self.delete_all_popup)
+        self.topLayout.addWidget(self.delete_all_button)
 
         # create the 'x min' input line
         self.xmin_input = QLineEdit()
@@ -379,18 +388,34 @@ class MyApp(QWidget):
         MyApp.auto_adjust = False      # turn auto_adjust off
         self.update_displayed_lims()
 
+    def delete_all_popup(self):
+        """Creates a pup-up window to make sure that the user wants to delete all of the points."""
+        popup = QMessageBox()
+        popup.setWindowTitle("Delete all points")
+        popup.setText("Are you sure you want to delete all points?")
+        popup.setIcon(QMessageBox.Question)
+        popup.setStandardButtons(QMessageBox.Cancel | QMessageBox.Yes)
+        popup.setDefaultButton(QMessageBox.Cancel)
+        popup.buttonClicked.connect(self.delete_all_popup_button_clicked)
+        x = popup.exec()
+
+    def delete_all_popup_button_clicked(self, button):
+        if button.text() == "&Yes":
+            self.canvas.delete_all_points()
+
     def checked_autoAdjust(self, checked):
         """Turns auto_adjust on and off."""
         MyApp.auto_adjust = not MyApp.auto_adjust
         if checked:
             self.enable_input_lines(False)
+            self.equalAxes.setEnabled(False)    # auto_adjust and equal_axis cannot be toggled at the same time
         if not checked:
-            if not self.equalAxes.isChecked():
-                self.enable_input_lines(True)
-                self.update_xmin()      # set pre-auto_adjust lims
-                self.update_xmax()
-                self.update_ymin()
-                self.update_ymax()
+            self.enable_input_lines(True)
+            self.equalAxes.setEnabled(True)
+            self.update_xmin()      # set pre-auto_adjust lims
+            self.update_xmax()
+            self.update_ymin()
+            self.update_ymax()
         self.canvas.redraw()
 
     def checked_equalAxes(self, checked):
@@ -399,14 +424,15 @@ class MyApp(QWidget):
         if checked:
             self.canvas.set_equal_axes()
             self.enable_input_lines(False)
+            self.autoAdjust.setEnabled(False)   # auto_adjust and equal_axis cannot be toggled at the same time
         else:
             self.canvas.set_auto_axes()
-            if not self.autoAdjust.isChecked():
-                self.enable_input_lines(True)
-                self.update_xmin()      # set pre-equal_axes lims
-                self.update_xmax()
-                self.update_ymin()
-                self.update_ymax()
+            self.enable_input_lines(True)
+            self.autoAdjust.setEnabled(True)
+            self.update_xmin()      # set pre-equal_axes lims
+            self.update_xmax()
+            self.update_ymin()
+            self.update_ymax()
         self.canvas.redraw()
 
     def changed_degree(self):
