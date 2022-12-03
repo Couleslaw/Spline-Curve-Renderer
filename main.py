@@ -343,7 +343,7 @@ class MyApp(QWidget):
         self.slider.valueChanged.connect(self.changed_degree)
         self.label = QLabel()
         self.label.setText(f"&Degree: {DEFAULT_deg}   ")  # spaces at end for padding
-        self.label.setBuddy(self.slider)
+        self.label.setBuddy(self.slider)     # changes focus to the slider if 'Alt+d' is pressed
         form = QFormLayout()
         form.addRow(self.label, self.slider)
         form.setContentsMargins(30, 0, 30, 0)
