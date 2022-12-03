@@ -35,5 +35,5 @@ If we make this more general for order $m$ polynomials we have $(m+1)n$ unknows.
 - $f_0(x_0) = y_0, \quad f_{n-1}(x_n) = y_n,
 - $f_i(x_{i+1}) = f_{i+1}(x_{i+1}) = y_{i+1}.
 
-We can set the first $m-1$ derivatives to be equal in all of the given points. This leaves us with $m-1$ more conditions we have to give. I chose to set the second derivative to be zero at the endpoints. If we need more conditions, we can just set higher order derivatives to be zero at the endpoints.
+We can set the first $m-1$ derivatives of adjacent functions to be equal in common points. This leaves us with $m-1$ more conditions we have to give. I chose that the second derivative must be equal to zero at the end points. If we need more conditions, we can just set higher order derivatives to zero at the endpoints.
 
