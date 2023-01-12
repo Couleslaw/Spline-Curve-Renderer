@@ -32,8 +32,8 @@ Overall we have a system of $4n$ linear equations with $4n$ unknowns. We can mak
 With the vector of unknowns: $(a_0, b_0, c_0, d_0,\dots a_{n-1}, b_{n-1}, c_{n-1}, d_{n-1})^\text{T}$.
 
 If we make this more general for order $m$ polynomials we have $(m+1)n$ unknows. So we have to come up with $(m+1)n$ equations. We once again want 
-- $f_0(x_0) = y_0, \quad f_{n-1}(x_n) = y_n,
-- $f_i(x_{i+1}) = f_{i+1}(x_{i+1}) = y_{i+1}.
+- $f_0(x_0) = y_0, \quad f_{n-1}(x_n) = y_n$,
+- $f_i(x_{i+1}) = f_{i+1}(x_{i+1}) = y_{i+1}$.
 
 We can set the first $m-1$ derivatives of adjacent functions to be equal in common points. This leaves us with $m-1$ more conditions we have to give. I chose that the second derivative must be equal to zero at the end points. If we need more conditions, we can just set higher order derivatives to zero at the endpoints.
 
