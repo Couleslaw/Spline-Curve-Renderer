@@ -1,6 +1,9 @@
 # What is this project about
 This was the final project of one of my courses in my first year of study at the Institute of Computer Science at Charles University in Prague. 
 
+## Dependencies
+This project is not compatible with the newer versions of matplotlib. Please see dependencies.txt for details.
+
 # Kreslítko spline křivek 
 
 Základní úloha je proložit zadané body spline funkcí, konkrétně natural splinem. V programu je možné:
