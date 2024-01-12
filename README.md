@@ -2,7 +2,7 @@
 This was the final project of one of my courses in my first year of study at the Institute of Computer Science at Charles University in Prague. 
 
 ## Dependencies
-This project is not compatible with the newer versions of matplotlib. Please see dependencies.txt for details.
+This project is not compatible with the newer versions of matplotlib. Please see [depencendies](dependencies.txt) for details.
 
 # Kreslítko spline křivek 
 
