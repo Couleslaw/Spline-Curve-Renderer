@@ -1,4 +1,7 @@
-# Zápočtový program 
+# What is this project about
+This was the final project of one of my courses in my first year of study at the Institute of Computer Science at Charles University in Prague. 
+
+# Kreslítko spline křivek 
 
 Základní úloha je proložit zadané body spline funkcí, konkrétně natural splinem. V programu je možné:
 - přidávat body
@@ -11,7 +14,7 @@ Základní úloha je proložit zadané body spline funkcí, konkrétně natural 
 - určit si jestli chceme nebo nechceme škálovat obě osy stejně
 - určit si jestli chceme nebo nechceme automaticky měnit limity aby se křivka vždy vešla na obrazovku.
 
-Celý program je rozdělený do 3 class. První classa slouží k vytvoření GUI pomocí knihovny PyQt5. Druhá classa slouží k vykreslení grafu a implementaci event-handlingu pomocí knihovny matplotlib. Třetí classa zajišťuje komunikaci mezi PyQt5 a matplotlibem.  
+Celý program je rozdělený do 3 tříd. První třída slouží k vytvoření GUI pomocí knihovny PyQt5. Druhá třída slouží k vykreslení grafu a implementaci event-handlingu pomocí knihovny matplotlib. Třetí třída zajišťuje komunikaci mezi PyQt5 a matplotlibem.  
 
 # Natural spline
 
