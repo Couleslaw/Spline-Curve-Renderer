@@ -1,2 +1,0 @@
-The project is not compatile with the newer versions of matplotlib.
-Please use the version 3.6.2 of matplotlib
