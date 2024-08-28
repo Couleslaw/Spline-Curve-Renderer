@@ -2,6 +2,10 @@
 
 Natural splines are a way to interpolate a set of points with a smooth curve. The curve is made up of multiple polynomials, each defined on a different interval. This program allows you to add, delete, and move points and see the spline curve change in real-time. See [this section](#math-of-natural-splines) for exact details on how natural splines are defined.
 
+## How to install
+
+Windows users can download an executable file from the [releases page](https://github.com/Couleslaw/Spline-Curve-Renderer/releases/latest). Linux and MacOS users can run the program by following the instructions below.
+
 ## Dependencies
 
 This project is not compatible with the newer versions of matplotlib. It works with version 3.6.2. I recommend creating a virtual environment and installing the dependencies from the `requirements.txt` file.
